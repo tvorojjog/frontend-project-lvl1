@@ -3,7 +3,8 @@ import {
   getRandomNumber,
   getUserAnswer,
   isNumberEven,
-  correctResultOfCalc,
+  getResultOfCalc,
+  getGCD,
 } from '../src/cli.js';
 
 const gameIsEven = () => {
@@ -43,7 +44,7 @@ const gameCalculator = () => {
     const firstRandomNum = getRandomNumber(1, 11);
     const secondRandomNum = getRandomNumber(1, 11);
     const operation = operations[getRandomNumber(0, 3)];
-    const correctAnswer = correctResultOfCalc(firstRandomNum, secondRandomNum, operation);
+    const correctAnswer = getResultOfCalc(firstRandomNum, secondRandomNum, operation);
     console.log(`Question: ${firstRandomNum} ${operation} ${secondRandomNum}`);
     const userAnswer = getUserAnswer();
 
@@ -62,4 +63,32 @@ const gameCalculator = () => {
   }
 };
 
-export { gameIsEven, gameCalculator };
+const gameGCD = () => {
+  let iter = 0;
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Find the greatest common divisor of given numbers.');
+
+  while (iter < 3) {
+    const firstRandomNum = getRandomNumber(1, 51);
+    const secondRandomNum = getRandomNumber(1, 51);
+    const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
+    console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
+    const userAnswer = getUserAnswer();
+
+    if (Number(userAnswer) === correctAnswer) {
+      console.log('Correct!');
+      iter += 1;
+    } else {
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
+    }
+  }
+
+  if (iter === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+};
+
+export { gameIsEven, gameCalculator, gameGCD };

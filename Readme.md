@@ -2,3 +2,4 @@
 ![Node.js CI](https://github.com/tvorojjog/frontend-project-lvl1/workflows/Node.js%20CI/badge.svg?branch=master)
 [![asciicast](https://asciinema.org/a/WPk1Fr7ZBqkEAnjCswn7gGYt0.svg)](https://asciinema.org/a/WPk1Fr7ZBqkEAnjCswn7gGYt0)
 [![asciicast](https://asciinema.org/a/szRkxl7ONGwO6g58i00KQN7XT.svg)](https://asciinema.org/a/szRkxl7ONGwO6g58i00KQN7XT)
+[![asciicast](https://asciinema.org/a/dhLnIxJ3bTxEDCBbaBWAyR7nR.svg)](https://asciinema.org/a/dhLnIxJ3bTxEDCBbaBWAyR7nR)

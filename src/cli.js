@@ -17,7 +17,7 @@ const isNumberEven = (num) => {
   return 'no';
 };
 
-const correctResultOfCalc = (firstNum, secondNum, operation) => {
+const getResultOfCalc = (firstNum, secondNum, operation) => {
   let result = 0;
 
   if (operation === '+') {
@@ -30,10 +30,26 @@ const correctResultOfCalc = (firstNum, secondNum, operation) => {
   return result;
 };
 
+const getGCD = (firstNum, secondNum) => {
+  let minNum = Math.min(firstNum, secondNum);
+  let result = 0;
+
+  while (minNum > 0) {
+    if (firstNum % minNum === 0 && secondNum % minNum === 0) {
+      result = minNum;
+      break;
+    } else {
+      minNum -= 1;
+    }
+  }
+  return result;
+};
+
 export {
   getUserName,
   getRandomNumber,
   getUserAnswer,
   isNumberEven,
-  correctResultOfCalc,
+  getResultOfCalc,
+  getGCD,
 };
