@@ -1,44 +1,47 @@
 import readlineSync from 'readline-sync';
-import { userName } from '../bin/brain-games.js'
 
 const getUserName = () => readlineSync.question('May I have your name? ');
 
 const getRandomNumber = (min = 1, max = 201) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+  const randomNum = Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min))) + Math.ceil(min);
+  return randomNum;
 };
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
 const isNumberEven = (num) => {
-    if (num % 2 === 0) {
-        return 'yes';
+  if (num % 2 === 0) {
+    return 'yes';
+  }
+
+  return 'no';
+};
+
+
+const gameIsEven = () => {
+  let iter = 0;
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+
+  while (iter < 3) {
+    const randomNum = getRandomNumber();
+    console.log(`Question: ${randomNum}`);
+    const userAnswer = getUserAnswer();
+
+    if (userAnswer === isNumberEven(randomNum)) {
+      console.log('Correct!');
+      iter += 1;
     } else {
-        return 'no';
-    };
-};
-
-const isCorrectAnswer = () => {
-    let iter = 0;
-
-    while (iter < 3) {
-        const randomNumber = getRandomNumber();
-        console.log(`Question: ${randomNumber}`);
-        const userAnswer = getUserAnswer();
-
-        if (userAnswer === isNumberEven(randomNumber)) {
-            console.log('Correct!');
-            iter +=1;
-        } else {
-            console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${isNumberEven(randomNumber)}.`);
-            console.log(`Let's try again, ${userName}!`)
-        };
-    };
-    const userName = getUserName();
-    if (iter === 3) {
-        console.log(`Congratulations, ${userName}!`);
+      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${isNumberEven(randomNum)}".`);
+      console.log(`Let's try again, ${userName}!`);
+      iter = 0;
     }
+  }
+
+  if (iter === 3) {
+    console.log(`Congratulations, ${userName}!`);
+  }
 };
 
-export { getUserName, isCorrectAnswer };
+export { getUserName, gameIsEven };

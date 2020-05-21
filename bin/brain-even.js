@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import { isCorrectAnswer } from '../src/cli.js';
+import { gameIsEven } from '../src/cli.js';
 
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
+console.log('Welcome to the Brain Games!');
 
-isCorrectAnswer();
+gameIsEven();
