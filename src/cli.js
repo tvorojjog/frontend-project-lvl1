@@ -17,31 +17,23 @@ const isNumberEven = (num) => {
   return 'no';
 };
 
+const correctResultOfCalc = (firstNum, secondNum, operation) => {
+  let result = 0;
 
-const gameIsEven = () => {
-  let iter = 0;
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-
-  while (iter < 3) {
-    const randomNum = getRandomNumber();
-    console.log(`Question: ${randomNum}`);
-    const userAnswer = getUserAnswer();
-
-    if (userAnswer === isNumberEven(randomNum)) {
-      console.log('Correct!');
-      iter += 1;
-    } else {
-      console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${isNumberEven(randomNum)}".`);
-      console.log(`Let's try again, ${userName}!`);
-      iter = 0;
-    }
+  if (operation === '+') {
+    result = firstNum + secondNum;
+  } else if (operation === '-') {
+    result = firstNum - secondNum;
+  } else {
+    result = firstNum * secondNum;
   }
-
-  if (iter === 3) {
-    console.log(`Congratulations, ${userName}!`);
-  }
+  return result;
 };
 
-export { getUserName, gameIsEven };
+export {
+  getUserName,
+  getRandomNumber,
+  getUserAnswer,
+  isNumberEven,
+  correctResultOfCalc,
+};
