@@ -45,6 +45,50 @@ const getGCD = (firstNum, secondNum) => {
   return result;
 };
 
+const getArProgression = () => {
+  const startNum = getRandomNumber(1, 101);
+  const step = getRandomNumber(2, 6);
+  let addNum = startNum;
+  let result = '';
+
+  for (let i = 0; i < 10; i += 1) {
+    result += `${addNum} `;
+    if (startNum < 50) {
+      addNum += step;
+    } else {
+      addNum -= step;
+    }
+  }
+  return result.trim();
+};
+
+const hideValueOfProg = (progression) => {
+  const result = progression.split(' ');
+  const idexOfHideVal = getRandomNumber(0, 10);
+  result[idexOfHideVal] = '..';
+  return result.join(' ');
+};
+
+const isHideValueOfProg = (progression, progForUser, value) => {
+  const checkProg = progForUser.split(' ');
+  let result = 0;
+  let correctValue = 0;
+
+  for (let i = 0; i <= checkProg.length; i += 1) {
+    if (checkProg[i] === '..') {
+      checkProg[i] = value;
+      correctValue = progression.split(' ')[i];
+      break;
+    }
+  }
+  if (checkProg.join(' ') === progression) {
+    result = value;
+  } else {
+    result = correctValue;
+  }
+  return result;
+};
+
 export {
   getUserName,
   getRandomNumber,
@@ -52,4 +96,7 @@ export {
   isNumberEven,
   getResultOfCalc,
   getGCD,
+  getArProgression,
+  hideValueOfProg,
+  isHideValueOfProg,
 };

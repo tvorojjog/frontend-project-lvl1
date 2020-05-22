@@ -6,6 +6,9 @@ import {
   isNumberEven,
   getResultOfCalc,
   getGCD,
+  hideValueOfProg,
+  isHideValueOfProg,
+  getArProgression,
 } from '../src/cli.js';
 
 const gameIsEven = () => {
@@ -37,7 +40,7 @@ const gameCalculator = () => {
     const operation = operations[getRandomNumber(0, 3)];
     const correctAnswer = getResultOfCalc(firstRandomNum, secondRandomNum, operation);
     console.log(`Question: ${firstRandomNum} ${operation} ${secondRandomNum}`);
-    const userAnswer = Number(getUserAnswer());
+    const userAnswer = getUserAnswer();
 
     if (showResult(userName, userAnswer, correctAnswer, i) === true) {
       break;
@@ -55,7 +58,7 @@ const gameGCD = () => {
     const secondRandomNum = getRandomNumber(1, 51);
     const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
     console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
-    const userAnswer = Number(getUserAnswer());
+    const userAnswer = getUserAnswer();
 
     if (showResult(userName, userAnswer, correctAnswer, i) === true) {
       break;
@@ -63,4 +66,27 @@ const gameGCD = () => {
   }
 };
 
-export { gameIsEven, gameCalculator, gameGCD };
+const gameArProgression = () => {
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('What number is missing in the progression?');
+
+  for (let i = 0; i < 3; i += 1) {
+    const progression = getArProgression();
+    const progForUser = hideValueOfProg(progression);
+    console.log(`Question: ${progForUser}`);
+    const userAnswer = getUserAnswer();
+    const correctAnswer = isHideValueOfProg(progression, progForUser, userAnswer);
+
+    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
+      break;
+    }
+  }
+};
+
+export {
+  gameIsEven,
+  gameCalculator,
+  gameGCD,
+  gameArProgression,
+};

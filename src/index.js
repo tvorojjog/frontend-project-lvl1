@@ -1,6 +1,6 @@
 const showResult = (userName, userAnswer, correctAnswer, iter) => {
   let result = '';
-  if (userAnswer === correctAnswer) {
+  if (userAnswer === String(correctAnswer)) {
     console.log('Correct!');
     if (iter === 2) {
       console.log(`Congratulations, ${userName}!`);
