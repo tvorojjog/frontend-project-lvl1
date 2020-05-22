@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { gameArProgression } from '../games/games.js';
+import gameArProgression from '../games/gameArProgression.js';
 
 console.log('Welcome to the Brain Games!');
 
