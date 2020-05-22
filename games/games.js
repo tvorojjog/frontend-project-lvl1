@@ -9,6 +9,7 @@ import {
   hideValueOfProg,
   isHideValueOfProg,
   getArProgression,
+  isPrimeNumber,
 } from '../src/cli.js';
 
 const gameIsEven = () => {
@@ -84,9 +85,27 @@ const gameArProgression = () => {
   }
 };
 
+const gameIsPrimeNumber = () => {
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+
+  for (let i = 0; i < 3; i += 1) {
+    const randomNum = getRandomNumber(1, 102);
+    console.log(`Question: ${randomNum}`);
+    const userAnswer = getUserAnswer();
+    const correctAnswer = isPrimeNumber(randomNum);
+
+    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
+      break;
+    }
+  }
+};
+
 export {
   gameIsEven,
   gameCalculator,
   gameGCD,
   gameArProgression,
+  gameIsPrimeNumber,
 };
