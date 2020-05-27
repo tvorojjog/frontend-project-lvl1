@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import gameCalculator from '../games/gameCalculator.js';
+import calculate from '../games/calculator.js';
 
-console.log('Welcome to the Brain Games!');
-
-gameCalculator();
+calculate();

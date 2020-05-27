@@ -1,18 +1,18 @@
-import readlineSync from 'readline-sync';
 import showResult from '../src/index.js';
 import {
   getUserAnswer,
   hideValueOfProg,
   isHideValueOfProg,
   getArProgression,
+  countOfRounds,
+  getUserName,
 } from '../src/cli.js';
 
-const gameArProgression = () => {
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-  console.log('What number is missing in the progression?');
+const buildАrProgression = () => {
+  const rules = 'What number is missing in the progression?';
+  const userName = getUserName(rules);
 
-  for (let i = 0; i < 3; i += 1) {
+  for (let i = 1; i <= countOfRounds; i += 1) {
     const progression = getArProgression();
     const progForUser = hideValueOfProg(progression);
     console.log(`Question: ${progForUser}`);
@@ -25,4 +25,4 @@ const gameArProgression = () => {
   }
 };
 
-export default gameArProgression;
+export default buildАrProgression;

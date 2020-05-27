@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import gameArProgression from '../games/gameArProgression.js';
+import buildАrProgression from '../games/arProgression.js';
 
-console.log('Welcome to the Brain Games!');
-
-gameArProgression();
+buildАrProgression();

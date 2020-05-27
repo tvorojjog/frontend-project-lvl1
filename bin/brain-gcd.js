@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-import gameGCD from '../games/gameGCD.js';
+import findGCD from '../games/grandCentralDispatch.js';
 
-console.log('Welcome to the Brain Games!');
-
-gameGCD();
+findGCD();

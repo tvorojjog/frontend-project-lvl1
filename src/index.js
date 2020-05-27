@@ -1,8 +1,10 @@
+import { countOfRounds } from './cli.js';
+
 const showResult = (userName, userAnswer, correctAnswer, iter) => {
   let result = '';
   if (userAnswer === String(correctAnswer)) {
     console.log('Correct!');
-    if (iter === 2) {
+    if (iter === countOfRounds) {
       console.log(`Congratulations, ${userName}!`);
       result = true;
     }
