@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
-import isPrime from '../games/primeNumber.js';
+import { findPrimeNum, rules } from '../games/primeNumber.js';
+import { startGame } from '../src/index.js';
 
-isPrime();
+startGame(findPrimeNum, rules);

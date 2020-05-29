@@ -1,33 +1,30 @@
-import showResult from '../src/index.js';
-import {
-  getRandomNumber,
-  getUserAnswer,
-  getResultOfCalc,
-  countOfRounds,
-  getUserName,
-  operations,
-  getrandomIndex,
-} from '../src/cli.js';
+import { getRandomNumber, getRandomIndex } from '../src/cli.js';
 
-const calculate = () => {
-  const rules = 'What is the result of the expression?';
-  const userName = getUserName(rules);
-  const startOfInt = 1;
-  const endOfInt = 11;
+const rules = 'What is the result of the expression?';
 
-  for (let i = 1; i <= countOfRounds; i += 1) {
-    const firstRandomNum = getRandomNumber(startOfInt, endOfInt);
-    const secondRandomNum = getRandomNumber(startOfInt, endOfInt);
-    const randomIndex = getrandomIndex(operations);
-    const operation = operations[randomIndex];
-    const correctAnswer = getResultOfCalc(firstRandomNum, secondRandomNum, operation);
-    console.log(`Question: ${firstRandomNum} ${operation} ${secondRandomNum}`);
-    const userAnswer = getUserAnswer();
+const operations = ['+', '-', '*'];
 
-    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
-      break;
-    }
+const getResultOfCalc = (firstNum, secondNum, operation) => {
+  let result = 0;
+
+  if (operation === '+') {
+    result = firstNum + secondNum;
+  } else if (operation === '-') {
+    result = firstNum - secondNum;
+  } else {
+    result = firstNum * secondNum;
   }
+  return result;
 };
 
-export default calculate;
+const calculate = (startOfInt = 1, endOfInt = 11) => {
+  const firstRandomNum = getRandomNumber(startOfInt, endOfInt);
+  const secondRandomNum = getRandomNumber(startOfInt, endOfInt);
+  const randomIndex = getRandomIndex(operations);
+  const operation = operations[randomIndex];
+  console.log(`Question: ${firstRandomNum} ${operation} ${secondRandomNum}`);
+  const correctAnswer = getResultOfCalc(firstRandomNum, secondRandomNum, operation);
+  return correctAnswer;
+};
+
+export { calculate, rules };

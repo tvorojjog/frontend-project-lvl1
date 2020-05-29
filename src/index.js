@@ -1,4 +1,16 @@
-import { countOfRounds } from './cli.js';
+import readlineSync from 'readline-sync';
+import { countOfRounds, getUserAnswer } from './cli.js';
+
+const getUserName = (rules = ' ') => {
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+
+  if (rules !== ' ') {
+    console.log(rules);
+  }
+  return userName;
+};
 
 const showResult = (userName, userAnswer, correctAnswer, iter) => {
   let result = '';
@@ -16,4 +28,17 @@ const showResult = (userName, userAnswer, correctAnswer, iter) => {
   return result;
 };
 
-export default showResult;
+const startGame = (game, rules) => {
+  const userName = getUserName(rules);
+
+  for (let i = 1; i <= countOfRounds; i += 1) {
+    const correctAnswer = game();
+    const userAnswer = getUserAnswer();
+
+    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
+      break;
+    }
+  }
+};
+
+export { startGame, getUserName };

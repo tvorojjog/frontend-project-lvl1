@@ -1,28 +1,26 @@
-import showResult from '../src/index.js';
-import {
-  getRandomNumber,
-  getUserAnswer,
-  isPrimeNumber,
-  countOfRounds,
-  getUserName,
-} from '../src/cli.js';
+import { getRandomNumber } from '../src/cli.js';
 
-const isPrime = () => {
-  const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-  const userName = getUserName(rules);
-  const startOfInt = 1;
-  const endOfInt = 102;
+const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-  for (let i = 1; i <= countOfRounds; i += 1) {
-    const randomNum = getRandomNumber(startOfInt, endOfInt);
-    console.log(`Question: ${randomNum}`);
-    const userAnswer = getUserAnswer();
-    const correctAnswer = isPrimeNumber(randomNum);
+const checkNumForPrime = (number) => {
+  const primeNumbers = [
+    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43,
+    47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101,
+  ];
 
-    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
-      break;
+  for (let i = 0; i < primeNumbers.length; i += 1) {
+    if (number === primeNumbers[i]) {
+      return 'yes';
     }
   }
+  return 'no';
 };
 
-export default isPrime;
+const findPrimeNum = () => {
+  const randomNum = getRandomNumber();
+  console.log(`Question: ${randomNum}`);
+  const correctAnswer = checkNumForPrime(randomNum);
+  return correctAnswer;
+};
+
+export { findPrimeNum, rules };

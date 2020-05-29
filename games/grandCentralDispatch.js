@@ -1,29 +1,29 @@
-import showResult from '../src/index.js';
-import {
-  getRandomNumber,
-  getUserAnswer,
-  getGCD,
-  countOfRounds,
-  getUserName,
-} from '../src/cli.js';
+import { getRandomNumber } from '../src/cli.js';
 
-const findGCD = () => {
-  const rules = 'Find the greatest common divisor of given numbers.';
-  const userName = getUserName(rules);
-  const startOfInterval = 1;
-  const endOfInterval = 51;
+const rules = 'Find the greatest common divisor of given numbers.';
 
-  for (let i = 1; i <= countOfRounds; i += 1) {
-    const firstRandomNum = getRandomNumber(startOfInterval, endOfInterval);
-    const secondRandomNum = getRandomNumber(startOfInterval, endOfInterval);
-    console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
-    const userAnswer = getUserAnswer();
-    const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
+const getGCD = (firstNum, secondNum) => {
+  let minNum = Math.min(firstNum, secondNum);
+  let result = 0;
+  const gcdMinNum = 0;
 
-    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
+  while (minNum > gcdMinNum) {
+    if (firstNum % minNum === 0 && secondNum % minNum === 0) {
+      result = minNum;
       break;
+    } else {
+      minNum -= 1;
     }
   }
+  return result;
 };
 
-export default findGCD;
+const findGCD = (startOfInterval = 1, endOfInterval = 51) => {
+  const firstRandomNum = getRandomNumber(startOfInterval, endOfInterval);
+  const secondRandomNum = getRandomNumber(startOfInterval, endOfInterval);
+  console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
+  const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
+  return correctAnswer;
+};
+
+export { findGCD, rules };

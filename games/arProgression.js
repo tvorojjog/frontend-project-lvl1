@@ -1,28 +1,64 @@
-import showResult from '../src/index.js';
-import {
-  getUserAnswer,
-  hideValueOfProg,
-  isHideValueOfProg,
-  getArProgression,
-  countOfRounds,
-  getUserName,
-} from '../src/cli.js';
+import { getRandomNumber, getRandomIndex } from '../src/cli.js';
 
-const buildАrProgression = () => {
-  const rules = 'What number is missing in the progression?';
-  const userName = getUserName(rules);
+const rules = 'What number is missing in the progression?';
 
-  for (let i = 1; i <= countOfRounds; i += 1) {
-    const progression = getArProgression();
-    const progForUser = hideValueOfProg(progression);
-    console.log(`Question: ${progForUser}`);
-    const userAnswer = getUserAnswer();
-    const correctAnswer = isHideValueOfProg(progression, progForUser, userAnswer);
+const getArProgression = () => {
+  const progressionLength = 10;
+  const steps = [2, 3, 4, 5];
+  const startNum = getRandomNumber();
+  const randomIndex = getRandomIndex(steps);
+  const step = Number(steps[randomIndex]);
+  let addNum = startNum;
+  let result = '';
 
-    if (showResult(userName, userAnswer, correctAnswer, i) === true) {
-      break;
+  for (let i = 0; i < progressionLength; i += 1) {
+    result += `${addNum} `;
+    if (startNum < 50) {
+      addNum += step;
+    } else {
+      addNum -= step;
     }
   }
+  return result.trim();
 };
 
-export default buildАrProgression;
+const hideValueOfProg = (progression, countOfHideVal = 1) => {
+  const result = progression.split(' ');
+  let countOfHiddenVal = 0;
+
+  for (let i = 0; i <= result.length; i += 1) {
+    if (countOfHiddenVal === countOfHideVal) {
+      break;
+    }
+
+    const idexOfHideVal = getRandomIndex(result);
+
+    if (result[idexOfHideVal] !== '..') {
+      result[idexOfHideVal] = '..';
+      countOfHiddenVal += 1;
+    }
+  }
+  return result.join(' ');
+};
+
+const showHideValue = (progression, progForUser) => {
+  const checkProg = progForUser.split(' ');
+  let correctValue = '';
+
+  for (let i = 0; i <= checkProg.length; i += 1) {
+    if (checkProg[i] === '..') {
+      correctValue += `${progression.split(' ')[i]} `;
+    }
+  }
+  return correctValue.trim();
+};
+
+const buildАrProgression = () => {
+  const progression = getArProgression();
+  const progForUser = hideValueOfProg(progression);
+  console.log(`Question: ${progForUser}`);
+  const correctAnswer = showHideValue(progression, progForUser);
+  return correctAnswer;
+};
+
+export { buildАrProgression, rules };
