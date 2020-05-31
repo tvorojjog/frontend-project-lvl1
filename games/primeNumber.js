@@ -16,8 +16,6 @@ const checkNumForPrime = (number) => {
   return 'no';
 };
 
-const findPrimeNum = () => {
-  return makeFindNumGame(checkNumForPrime);
-};
+const findPrimeNum = () => makeFindNumGame(checkNumForPrime);
 
 export { findPrimeNum, rules };
