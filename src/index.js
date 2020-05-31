@@ -24,12 +24,12 @@ const startGame = (game, rules) => {
     const answer = correctAnswer;
     const userAnswer = getUserAnswer();
 
-    if (userAnswer === String(answer)) {
+    if (i === countOfRounds) {
       console.log('Correct!');
-      if (i === countOfRounds) {
-        console.log(`Congratulations, ${userName}!`);
-        break;
-      }
+      console.log(`Congratulations, ${userName}!`);
+      break;
+    } else if (userAnswer === String(answer)) {
+      console.log('Correct!');
     } else {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${answer}".`);
       console.log(`Let's try again, ${userName}!`);
