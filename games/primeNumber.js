@@ -1,4 +1,4 @@
-import { getRandomNumber } from '../src/cli.js';
+import { makeFindNumGame } from '../src/cli.js';
 
 const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -17,10 +17,7 @@ const checkNumForPrime = (number) => {
 };
 
 const findPrimeNum = () => {
-  const randomNum = getRandomNumber();
-  const question = `Question: ${randomNum}`;
-  const correctAnswer = checkNumForPrime(randomNum);
-  return { correctAnswer, question };
+  return makeFindNumGame(checkNumForPrime);
 };
 
 export { findPrimeNum, rules };

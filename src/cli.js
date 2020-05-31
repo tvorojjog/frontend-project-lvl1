@@ -9,4 +9,11 @@ const getArrLength = (arr) => arr.length;
 
 const getRandomIndex = (arr) => getRandomNumber(firstValOfArr, getArrLength(arr));
 
-export { getRandomNumber, getRandomIndex };
+const makeFindNumGame = (checkingFunc) => {
+  const randomNum = getRandomNumber();
+  const question = `Question: ${randomNum}`;
+  const correctAnswer = checkingFunc(randomNum);
+  return { correctAnswer, question };
+};
+
+export { getRandomNumber, getRandomIndex, makeFindNumGame };
