@@ -21,9 +21,9 @@ const getGCD = (firstNum, secondNum) => {
 const findGCD = (startOfInterval = 1, endOfInterval = 51) => {
   const firstRandomNum = getRandomNumber(startOfInterval, endOfInterval);
   const secondRandomNum = getRandomNumber(startOfInterval, endOfInterval);
-  console.log(`Question: ${firstRandomNum} ${secondRandomNum}`);
+  const question = `Question: ${firstRandomNum} ${secondRandomNum}`;
   const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
-  return correctAnswer;
+  return { correctAnswer, question };
 };
 
 export { findGCD, rules };

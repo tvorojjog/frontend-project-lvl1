@@ -18,9 +18,9 @@ const checkNumForPrime = (number) => {
 
 const findPrimeNum = () => {
   const randomNum = getRandomNumber();
-  console.log(`Question: ${randomNum}`);
+  const question = `Question: ${randomNum}`;
   const correctAnswer = checkNumForPrime(randomNum);
-  return correctAnswer;
+  return { correctAnswer, question };
 };
 
 export { findPrimeNum, rules };

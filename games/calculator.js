@@ -18,13 +18,13 @@ const getResultOfCalc = (firstNum, secondNum, operation) => {
 };
 
 const calculate = (startOfInt = 1, endOfInt = 11) => {
-  const firstRandomNum = getRandomNumber(startOfInt, endOfInt);
-  const secondRandomNum = getRandomNumber(startOfInt, endOfInt);
   const randomIndex = getRandomIndex(operations);
+  const firstNum = getRandomNumber(startOfInt, endOfInt);
+  const secondNum = getRandomNumber(startOfInt, endOfInt);
   const operation = operations[randomIndex];
-  console.log(`Question: ${firstRandomNum} ${operation} ${secondRandomNum}`);
-  const correctAnswer = getResultOfCalc(firstRandomNum, secondRandomNum, operation);
-  return correctAnswer;
+  const question = `Question: ${firstNum} ${operation} ${secondNum}`;
+  const correctAnswer = getResultOfCalc(firstNum, secondNum, operation);
+  return { correctAnswer, question };
 };
 
 export { calculate, rules };

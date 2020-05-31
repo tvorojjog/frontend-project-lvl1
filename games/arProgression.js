@@ -56,9 +56,9 @@ const showHideValue = (progression, progForUser) => {
 const buildАrProgression = () => {
   const progression = getArProgression();
   const progForUser = hideValueOfProg(progression);
-  console.log(`Question: ${progForUser}`);
+  const question = `Question: ${progForUser}`;
   const correctAnswer = showHideValue(progression, progForUser);
-  return correctAnswer;
+  return { correctAnswer, question };
 };
 
 export { buildАrProgression, rules };
