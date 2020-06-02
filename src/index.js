@@ -24,8 +24,7 @@ const greeting = (rules) => {
 };
 
 const startGame = (game) => {
-  const { rules } = game();
-  const userName = greeting(rules);
+  const userName = greeting(game().rules);
 
   for (let i = 1; i <= countOfRounds; i += 1) {
     const { correctAnswer, question } = game();
