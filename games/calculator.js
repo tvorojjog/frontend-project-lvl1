@@ -22,9 +22,9 @@ const calculate = (startOfInt = 1, endOfInt = 11) => {
   const firstNum = getRandomNumber(startOfInt, endOfInt);
   const secondNum = getRandomNumber(startOfInt, endOfInt);
   const operation = operations[randomIndex];
-  const question = `Question: ${firstNum} ${operation} ${secondNum}`;
+  const question = `${firstNum} ${operation} ${secondNum}`;
   const correctAnswer = getResultOfCalc(firstNum, secondNum, operation);
-  return { correctAnswer, question };
+  return { correctAnswer, question, rules };
 };
 
-export { calculate, rules };
+export default calculate;

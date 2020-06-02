@@ -1,4 +1,4 @@
-import { makeFindNumGame } from '../src/cli.js';
+import { makeFindNumGame } from '../src/index.js';
 
 const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
@@ -16,6 +16,6 @@ const checkNumForPrime = (number) => {
   return 'no';
 };
 
-const findPrimeNum = () => makeFindNumGame(checkNumForPrime);
+const findPrimeNum = () => makeFindNumGame(checkNumForPrime, rules);
 
-export { findPrimeNum, rules };
+export default findPrimeNum;

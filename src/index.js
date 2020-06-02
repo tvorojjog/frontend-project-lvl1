@@ -1,8 +1,16 @@
 import readlineSync from 'readline-sync';
+import { getRandomNumber } from './cli.js';
 
 const countOfRounds = 3;
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
+
+const makeFindNumGame = (checkingFunc, rules) => {
+  const randomNum = getRandomNumber();
+  const question = `${randomNum}`;
+  const correctAnswer = checkingFunc(randomNum);
+  return { correctAnswer, question, rules };
+};
 
 const greeting = (rules) => {
   console.log('Welcome to the Brain Games!');
@@ -15,16 +23,17 @@ const greeting = (rules) => {
   return userName;
 };
 
-const startGame = (game, rules) => {
+const startGame = (game) => {
+  const { rules } = game();
   const userName = greeting(rules);
 
   for (let i = 1; i <= countOfRounds; i += 1) {
     const { correctAnswer, question } = game();
-    console.log(question);
+    console.log(`Question: ${question}`);
     const answer = correctAnswer;
     const userAnswer = getUserAnswer();
 
-    if (i === countOfRounds) {
+    if (i === countOfRounds && userAnswer === String(answer)) {
       console.log('Correct!');
       console.log(`Congratulations, ${userName}!`);
       break;
@@ -38,4 +47,4 @@ const startGame = (game, rules) => {
   }
 };
 
-export { startGame, greeting };
+export { startGame, greeting, makeFindNumGame };
