@@ -1,4 +1,4 @@
-import { makeFindNumGame } from '../src/index.js';
+import { makeGameForFindNum } from '../src/cli.js';
 
 const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -9,6 +9,6 @@ const checkNumForEven = (num) => {
   return 'no';
 };
 
-const findEvenNumber = () => makeFindNumGame(checkNumForEven, rules);
+const findEvenNumber = () => makeGameForFindNum(checkNumForEven, rules);
 
 export default findEvenNumber;

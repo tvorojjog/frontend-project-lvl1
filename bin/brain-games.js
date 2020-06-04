@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
-import { greeting } from '../src/index.js';
+import { getUserName } from '../src/cli.js';
 
-greeting('no rules');
+console.log('Welcome to the Brain Games!');
+
+getUserName('no rules');

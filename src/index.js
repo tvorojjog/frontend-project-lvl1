@@ -1,31 +1,14 @@
 import readlineSync from 'readline-sync';
-import { getRandomNumber } from './cli.js';
+import { getUserName } from './cli.js';
 
 const countOfRounds = 3;
 
 const getUserAnswer = () => readlineSync.question('Your answer: ');
 
-const makeFindNumGame = (checkingFunc, rules) => {
-  const randomNum = getRandomNumber();
-  const question = `${randomNum}`;
-  const correctAnswer = checkingFunc(randomNum);
-  return { correctAnswer, question, rules };
-};
-
-const greeting = (rules) => {
-  console.log('Welcome to the Brain Games!');
-  const userName = readlineSync.question('May I have your name? ');
-  console.log(`Hello, ${userName}!`);
-
-  if (rules !== 'no rules') {
-    console.log(rules);
-  }
-  return userName;
-};
-
 const startGame = (game) => {
+  console.log('Welcome to the Brain Games!');
   const { rules } = game();
-  const userName = greeting(rules);
+  const userName = getUserName(rules);
 
   for (let i = 1; i <= countOfRounds; i += 1) {
     const { correctAnswer, question } = game();
@@ -34,8 +17,7 @@ const startGame = (game) => {
     const userAnswer = getUserAnswer();
 
     if (i === countOfRounds && userAnswer === String(answer)) {
-      console.log('Correct!');
-      console.log(`Congratulations, ${userName}!`);
+      console.log(`Correct!\nCongratulations, ${userName}!`);
       break;
     } else if (userAnswer === String(answer)) {
       console.log('Correct!');
@@ -47,4 +29,4 @@ const startGame = (game) => {
   }
 };
 
-export { startGame, greeting, makeFindNumGame };
+export default startGame;
