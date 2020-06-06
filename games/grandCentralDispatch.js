@@ -3,19 +3,16 @@ import { getRandomNumber } from '../src/cli.js';
 const rules = 'Find the greatest common divisor of given numbers.';
 
 const getGCD = (firstNum, secondNum) => {
-  let minNum = Math.min(firstNum, secondNum);
-  let result = 0;
-  const gcdMinNum = 0;
+  const gcdMinNum = 1;
+  const result = [];
 
-  while (minNum > gcdMinNum) {
-    if (firstNum % minNum === 0 && secondNum % minNum === 0) {
-      result = minNum;
-      break;
-    } else {
-      minNum -= 1;
+  for (let i = Math.min(firstNum, secondNum); i >= gcdMinNum; i -= 1) {
+    if (firstNum % i === 0 && secondNum % i === 0) {
+      result.push(i);
+      i = gcdMinNum;
     }
   }
-  return result;
+  return result.join('');
 };
 
 const findGCD = (startOfInterval = 1, endOfInterval = 51) => {
@@ -23,7 +20,7 @@ const findGCD = (startOfInterval = 1, endOfInterval = 51) => {
   const secondRandomNum = getRandomNumber(startOfInterval, endOfInterval);
   const question = `${firstRandomNum} ${secondRandomNum}`;
   const correctAnswer = getGCD(firstRandomNum, secondRandomNum);
-  return { correctAnswer, question, rules };
+  return { correctAnswer, question };
 };
 
-export default findGCD;
+export { findGCD, rules };

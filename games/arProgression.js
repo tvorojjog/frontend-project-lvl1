@@ -8,34 +8,25 @@ const getArProgression = () => {
   const startNum = getRandomNumber();
   const randomIndex = getRandomIndex(steps);
   const step = Number(steps[randomIndex]);
-  let addNum = startNum;
-  let result = '';
+  const newProg = [startNum];
 
-  for (let i = 0; i < progressionLength; i += 1) {
-    result += `${addNum} `;
+  for (let i = 1; i < progressionLength; i += 1) {
     if (startNum < 50) {
-      addNum += step;
+      newProg.push(newProg[newProg.length - 1] + step);
     } else {
-      addNum -= step;
+      newProg.push(newProg[newProg.length - 1] - step);
     }
   }
-  return result.trim();
+  return newProg.join(' ');
 };
 
 const hideValueOfProg = (progression, countOfHideVal = 1) => {
   const result = progression.split(' ');
-  let countOfHiddenVal = 0;
 
-  for (let i = 0; i <= result.length; i += 1) {
-    if (countOfHiddenVal === countOfHideVal) {
-      break;
-    }
-
+  for (let i = 0; i < countOfHideVal; i += 1) {
     const idexOfHideVal = getRandomIndex(result);
-
     if (result[idexOfHideVal] !== '..') {
       result[idexOfHideVal] = '..';
-      countOfHiddenVal += 1;
     }
   }
   return result.join(' ');
@@ -43,14 +34,14 @@ const hideValueOfProg = (progression, countOfHideVal = 1) => {
 
 const showHideValue = (progression, progForUser) => {
   const checkProg = progForUser.split(' ');
-  let correctValue = '';
+  const correctValues = [];
 
   for (let i = 0; i <= checkProg.length; i += 1) {
     if (checkProg[i] === '..') {
-      correctValue += `${progression.split(' ')[i]} `;
+      correctValues.push(progression.split(' ')[i]);
     }
   }
-  return correctValue.trim();
+  return correctValues.join(' ');
 };
 
 const buildАrProgression = () => {
@@ -58,7 +49,7 @@ const buildАrProgression = () => {
   const progForUser = hideValueOfProg(progression);
   const question = `${progForUser}`;
   const correctAnswer = showHideValue(progression, progForUser);
-  return { correctAnswer, question, rules };
+  return { correctAnswer, question };
 };
 
-export default buildАrProgression;
+export { buildАrProgression, rules };

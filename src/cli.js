@@ -11,11 +11,11 @@ const getArrLength = (arr) => arr.length;
 
 const getRandomIndex = (arr) => getRandomNumber(firstValOfArr, getArrLength(arr));
 
-const makeGameForFindNum = (checkingFunc, rules) => {
+const makeGameForFindNum = (checkingFunc) => {
   const randomNum = getRandomNumber();
   const question = `${randomNum}`;
   const correctAnswer = checkingFunc(randomNum);
-  return { correctAnswer, question, rules };
+  return { correctAnswer, question };
 };
 
 const getUserName = (rules) => {

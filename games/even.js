@@ -9,6 +9,6 @@ const checkNumForEven = (num) => {
   return 'no';
 };
 
-const findEvenNumber = () => makeGameForFindNum(checkNumForEven, rules);
+const findEvenNumber = () => makeGameForFindNum(checkNumForEven);
 
-export default findEvenNumber;
+export { findEvenNumber, rules };
