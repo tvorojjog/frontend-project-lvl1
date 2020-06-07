@@ -14,19 +14,14 @@ const startGame = (game, rules) => {
     console.log(`Question: ${question}`);
     const userAnswer = getUserAnswer();
 
-    if (i === countOfRounds && userAnswer === String(correctAnswer)) {
-      console.log(`Correct!\nCongratulations, ${userName}!`);
-      return;
-    }
-
-    if (userAnswer === correctAnswer) {
-      console.log('Correct!');
-    } else {
+    if (userAnswer !== correctAnswer) {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       console.log(`Let's try again, ${userName}!`);
       return;
     }
+    console.log('Correct!');
   }
+  console.log(`Congratulations, ${userName}!`);
 };
 
 export default startGame;
