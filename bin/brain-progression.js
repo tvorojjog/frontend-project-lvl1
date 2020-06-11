@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { buildАrProgression, rules } from '../games/arProgression.js';
+import { raundProgression, rules } from '../games/progression.js';
 import startGame from '../src/index.js';
 
-startGame(buildАrProgression, rules);
+startGame(raundProgression, rules);

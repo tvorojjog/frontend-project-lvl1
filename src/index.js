@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import { getUserName } from './cli.js';
+import getUserName from './cli.js';
 
 const countOfRounds = 3;
 
@@ -14,7 +14,7 @@ const startGame = (game, rules) => {
     console.log(`Question: ${question}`);
     const userAnswer = getUserAnswer();
 
-    if (userAnswer !== correctAnswer) {
+    if (userAnswer !== String(correctAnswer)) {
       console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}".`);
       console.log(`Let's try again, ${userName}!`);
       return;

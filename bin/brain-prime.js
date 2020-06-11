@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { findPrimeNum, rules } from '../games/primeNumber.js';
+import { raundPrime, rules } from '../games/prime.js';
 import startGame from '../src/index.js';
 
-startGame(findPrimeNum, rules);
+startGame(raundPrime, rules);

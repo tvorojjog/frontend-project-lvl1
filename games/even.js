@@ -1,14 +1,14 @@
-import { makeGameForFindNum } from '../src/cli.js';
+import { generateRandomNumber } from '../src/utils.js';
 
 const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-const checkNumForEven = (num) => {
-  if (num % 2 === 0) {
-    return 'yes';
-  }
-  return 'no';
+const isEven = (num) => num % 2 === 0;
+
+const raundEven = () => {
+  const randomNum = generateRandomNumber();
+  const question = `${randomNum}`;
+  const correctAnswer = isEven(randomNum) ? 'yes' : 'no';
+  return { correctAnswer, question };
 };
 
-const findEvenNumber = () => makeGameForFindNum(checkNumForEven);
-
-export { findEvenNumber, rules };
+export { raundEven, rules };
